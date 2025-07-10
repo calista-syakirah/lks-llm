@@ -6,7 +6,7 @@ class InvalidLoginError extends CredentialsSignin {
    code = "Invalid identifier or password";
 }
 
-const ID_TOKEN_EXPIRATION_MINUTES = parseInt(process.env.NEXT_PUBLUC_COGNITO_ID_TOKEN_EXPIRED || '60', 10);
+const ID_TOKEN_EXPIRATION_MINUTES = parseInt(process.env.NEXT_PUBLIC_COGNITO_ID_TOKEN_EXPIRED || '60', 10);
 const ID_TOKEN_EXPIRATION_SECONDS = ID_TOKEN_EXPIRATION_MINUTES * 60;
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
