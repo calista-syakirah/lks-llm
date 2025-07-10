@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
+  "dev": "next dev",
+  "build": "next build && next export",
+  "start": "next start"
+},
+
   "dependencies": {
     "@ai-sdk/openai": "^0.0.33",
     "@aws-sdk/client-cognito-identity-provider": "^3.616.0",
