@@ -74,11 +74,12 @@ const Signup = () => {
       setErr("");
 
       try {
-         const response = await fetch("/api/signup", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ fullName, password, email }),
-         });
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/signup`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ fullName, password, email }),
+});
+
 
          const resData = await response.json();
 
