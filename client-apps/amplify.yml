@@ -8,10 +8,11 @@ frontend:
     build:
       commands:
         - npm run build
+        - npm run export
   artifacts:
-    baseDirectory: client-apps/.next
+    baseDirectory: client-apps/out
     files:
       - '**/*'
   cache:
     paths:
-      - node_modules/**/*
+      - client-apps/node_modules/**/*
