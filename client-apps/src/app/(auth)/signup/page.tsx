@@ -13,9 +13,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 
-import { Auth } from "aws-amplify/auth";
+import { Amplify } from "aws-amplify";
+import { createAuth } from "aws-amplify/auth";
+import config from "@/aws-exports"; // pastikan ini benar, atau ganti dengan config manual
 
-
+// 🔧 Konfigurasi Auth Cognito
+const auth = createAuth(config);
+Amplify.configure({ ...config, Auth: auth });
 
 const signUpSchema = z
   .object({
@@ -65,22 +69,21 @@ const Signup = () => {
     );
   };
 
-  // ✅ Handler signup
   const onSubmit: SubmitHandler<SignUpFormInputs> = async (data) => {
     const { fullName, email, password } = data;
     setIsLoading(true);
     setErr("");
 
     try {
-      const { user } = await Auth.signUp({
+      const { user } = await auth.signUp({
         username: email,
         password,
-        attributes: {
-          name: fullName,
-          email,
-        },
-        autoSignIn: {
-          enabled: true,
+        options: {
+          userAttributes: {
+            name: fullName,
+            email,
+          },
+          autoSignIn: true,
         },
       });
 
