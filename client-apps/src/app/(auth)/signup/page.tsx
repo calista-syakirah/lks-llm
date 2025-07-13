@@ -13,9 +13,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 
-import { Auth } from "aws-amplify";
+import { Auth } from "aws-amplify/auth";
 
-// ✅ Schema validasi
+
+
 const signUpSchema = z
   .object({
     fullName: z.string().min(1, { message: "Full name is required" }),
